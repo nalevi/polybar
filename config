@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000000
+background = #1C1D19
 background-alt = #2E3436
 ;foreground = ${xrdb:color7:#222}
 foreground = #FFFFFF
@@ -80,7 +80,7 @@ type = internal/i3
 
 index-sort =false 
 
-label-mode-padding = 2
+;label-mode-padding = 2
 label-mode-foreground = #FFFFFF
 label-mode-background = ${colors.background-alt}
 
@@ -101,12 +101,12 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-ws-icon-0 = 1;  
-ws-icon-1 = 2;  
-ws-icon-3 = 3;  
-ws-icon-4 = 4; 
-ws-icon-5 = 5;  
-ws-icon-6 = 6;  
+ws-icon-0 = 0;  
+ws-icon-1 = 1;  
+ws-icon-2 = 2;  
+ws-icon-3 = 3;ﭮ 
+ws-icon-4 = 4;  
+ws-icon-5 = 5;  
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -243,13 +243,35 @@ label = %date% %time%
 label-font = 3
 
 [module/powermenu]
-type = custom/script
-;exec = /home/levi/.config/i3blocks/scripts/shutdown_menu
-format = <label>
+type = custom/menu
 
-label =   
+expand-right = true
 
-click-left = /home/levi/.config/i3blocks/scripts/shutdown_menu 
+format-spacing = 1
+
+label-open =   
+label-open-foreground = ${colors.secondary}
+label-open-padding = 1
+label-close = cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
 
 [module/spotify]
 type = custom/script
@@ -281,3 +303,4 @@ exec = echo "ﭠ "
 format = <label>
 click-left = playerctl next spotify
 
+; vim:ft=dosini
