@@ -46,7 +46,7 @@ border-size = 4
 border-color = #00000000
 
 padding-left = 0
-padding-right = 0
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 1
@@ -78,7 +78,7 @@ enable-ipc = true
 [module/i3]
 type = internal/i3
 
-index-sort =false 
+index-sort = true
 
 ;label-mode-padding = 2
 label-mode-foreground = #FFFFFF
@@ -101,12 +101,12 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-ws-icon-0 = 0;  
-ws-icon-1 = 1;  
-ws-icon-2 = 2;  
-ws-icon-3 = 3;ﭮ 
-ws-icon-4 = 4;  
-ws-icon-5 = 5;  
+;ws-icon-0 = 0;  
+;ws-icon-1 = 1;  
+;ws-icon-2 = 2;  
+;ws-icon-3 = 3;ﭮ 
+;ws-icon-4 = 4;  
+;ws-icon-5 = 5;  
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -133,7 +133,7 @@ type = internal/fs
 ; Mountpoints to display
 mount-0 = / 
 
-label-mounted =  :  %free% of %total%
+label-mounted =  : %free% / %total%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -144,9 +144,10 @@ format = <label-layout> <label-indicator>
 blacklist-0 = num lock
 blacklist-1 = scroll lock
 
-label-indicator = %name%
+label-layout = %icon%  %layout%
 
 layout-icon-default =   
+click-left = setxkbmap hu 
 
 [module/memory]
 type = internal/memory
