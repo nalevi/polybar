@@ -1,0 +1,251 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #000000
+background-alt = #2E3436
+;foreground = ${xrdb:color7:#222}
+foreground = #FFFFFF
+foreground-alt = #676E7D
+primary = #ffb52a
+secondary = #e60053
+alert = #FFFFFF
+
+[bar/mainbar]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = UbuntuMono Nerd Font:style=Bold
+font-1 = Ubuntu Mono derivative Powerline:style=Bold
+
+modules-left = i3
+modules-center = mpd
+modules-right = filesystem pulseaudio xkeyboard memory cpu wired-network wireless-network battery date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next" 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+
+index-sort =false 
+
+label-mode-padding = 2
+label-mode-foreground = #FFFFFF
+label-mode-background = ${colors.background-alt}
+
+; focused = Active workspace on focused monitor
+label-focused-background = ${colors.background-alt}
+;label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.background}
+
+; urgent = Workspace with urgency hint set
+label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.background}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+ws-icon-0 = 1;  
+ws-icon-1 = 2;  
+ws-icon-3 = 3;  
+ws-icon-4 = 4; 
+ws-icon-5 = 5;  
+ws-icon-6 = 6;  
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+label-muted = ﱝ muted
+label-muted-foreground = #666
+
+format-volume = <ramp-volume> <label-volume> 
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 =   
+ramp-volume-1 = 墳  
+ramp-volume-2 =    
+
+; Right and Middle click
+click-right = pavucontrol
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = / 
+
+label-mounted =  :  %free% of %total%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = <label-layout> <label-indicator>
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+label-indicator = %name%
+
+layout-icon-default =   
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+
+label =  %gb_used%/%gb_free%
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+
+label =   %percentage%% 
+
+[module/wired-network]
+type = internal/network
+interface = enp4s0
+
+; Default: %ifname% %local_ip%
+label-connected =  %essid% %local_ip%
+label-connected-foreground = #00FF00
+
+interval = 5.0
+
+; Default: (none)
+label-disconnected =  not connected
+label-disconnected-foreground = #FF0000
+
+[module/wireless-network]
+type = internal/network
+interface = wlan0
+
+; Default: %ifname% %local_ip%
+label-connected =   %essid% %local_ip%
+label-connected-foreground = #00FF00
+
+interval = 5.0
+
+; Default: (none)
+label-disconnected =   not connected
+label-disconnected-foreground = #FF0000
+
+[module/battery]
+type = internal/battery
+
+time-format = (%H:%M)
+
+format-charging = <animation-charging> <label-charging> 
+
+format-discharging = <ramp-capacity> <label-discharging> 
+
+format-full = <ramp-capacity> <label-full>
+
+label-full =  
+
+label-charging = %percentage%% %time%
+
+label-discharging = %percentage%% %time%
+
+ramp-capacity-0 =  
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 =  
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-3 =  
+animation-charging-4 =  
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+
+[module/date]
+type = internal/date
+
+internal = 30.0
+date = %Y-%m-%d%
+time = %H:%M
+
+format =  <label>
+format-foreground = #fff
+
+label = %date% %time%
+label-font = 3
+
+[module/powermenu]
+type = custom/script
+;exec = /home/levi/.config/i3blocks/scripts/shutdown_menu
+format = <label>
+
+label =   
+
+click-left = /home/levi/.config/i3blocks/scripts/shutdown_menu
+
