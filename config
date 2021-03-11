@@ -27,6 +27,17 @@ primary = #ffb52a
 secondary = #e60053
 alert = #FFFFFF
 
+[bar/wsbar]
+width = 25%
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next" 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+modules-left = i3
+
 [bar/mainbar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
@@ -34,7 +45,7 @@ height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
-fixed-center = false
+fixed-center = true 
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -58,7 +69,7 @@ modules-left = i3
 modules-center = spotify-prev spotify spotify-play-pause spotify-next
 modules-right = filesystem pulseaudio xkeyboard memory cpu wired-network wireless-network battery date powermenu
 
-tray-position = right
+tray-position = none 
 tray-padding = 2
 ;tray-background = #0063ff
 
@@ -200,6 +211,7 @@ label-disconnected-foreground = #FF0000
 
 [module/battery]
 type = internal/battery
+full = 100
 
 time-format = (%H:%M)
 
@@ -207,9 +219,9 @@ format-charging = <animation-charging> <label-charging>
 
 format-discharging = <ramp-capacity> <label-discharging> 
 
-format-full = <ramp-capacity> <label-full>
+format-full = <label-full>
 
-label-full =  
+label-full =  %percentage%% %time%
 
 label-charging = %percentage%% %time%
 label-charging-underline = #33FF33
