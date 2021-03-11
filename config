@@ -57,7 +57,7 @@ border-size = 4
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 1
@@ -70,7 +70,7 @@ modules-center = spotify-prev spotify spotify-play-pause spotify-next
 modules-right = filesystem pulseaudio xkeyboard memory cpu wired-network wireless-network battery date powermenu
 
 tray-position = none 
-tray-padding = 2
+;tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -269,8 +269,9 @@ expand-right = true
 format-spacing = 1
 
 label-open =   
-label-open-foreground = ${colors.secondary}
-label-open-padding = 1
+label-open-foreground = ${colors.foreground}
+label-open-background = ${colors.secondary}
+label-open-padding = 2
 label-close = cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
