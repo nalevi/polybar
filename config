@@ -186,7 +186,7 @@ type = internal/network
 interface = enp4s0
 
 ; Default: %ifname% %local_ip%
-label-connected =  %essid% %local_ip%
+label-connected =  %local_ip%
 label-connected-foreground = #00FF00
 
 interval = 5.0
