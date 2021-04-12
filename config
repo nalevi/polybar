@@ -47,7 +47,7 @@ height = 27
 radius = 6.0
 fixed-center = true 
 
-background = ${colors.background}
+background = #00000000 
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -65,13 +65,12 @@ module-margin-right = 1
 font-0 = UbuntuMono Nerd Font:style=Bold
 font-1 = Ubuntu Mono derivative Powerline:style=Bold
 
-modules-left = launcher i3
-modules-center = spotify-prev spotify spotify-play-pause spotify-next
+modules-left = launcher i3 
+modules-center = spotify-prev spotify spotify-next spotify-play-pause
 modules-right = filesystem pulseaudio xkeyboard memory cpu wired-network wireless-network battery date powermenu
 
 tray-position = none 
 ;tray-padding = 2
-;tray-background = #0063ff
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -96,13 +95,13 @@ label-mode-foreground = #FFFFFF
 label-mode-background = ${colors.background-alt}
 
 ; focused = Active workspace on focused monitor
-label-focused-background = ${colors.background}
+;label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused-padding = 2
-label-unfocused-background = ${colors.background}
+;label-unfocused-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent-background = ${colors.alert}
@@ -119,6 +118,18 @@ label-urgent-padding = 2
 ;ws-icon-4 = 4;  
 ;ws-icon-5 = 5;  
 
+[module/empty1]
+type = custom/text
+content-background = "#00000000"
+content-foreground = ${colors.background} 
+content = "%{T4}%{T-}"
+
+[module/empty2]
+type = custom/text
+content-background = #00000000
+content-foreground = ${colors.background} 
+content = "%{T3}%{T-}"
+
 [module/pulseaudio]
 type = internal/pulseaudio
 label-volume-underline = #1db954
@@ -130,7 +141,8 @@ label-muted = ﱝ muted
 label-muted-foreground = #666
 
 format-volume = <ramp-volume> <label-volume> 
-
+label-background = ${colors.background}
+format-foreground = ${colors.foreground}
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 =   
 ramp-volume-1 = 墳  
@@ -146,6 +158,7 @@ type = internal/fs
 mount-0 = / 
 
 label-mounted =  : %free% / %total%
+format-background = ${colors.background}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -159,7 +172,6 @@ blacklist-1 = scroll lock
 label-layout = %icon%  %layout%
 
 layout-icon-default =   
-click-left = setxkbmap hu 
 
 [module/memory]
 type = internal/memory
@@ -316,6 +328,7 @@ hook-0 = echo " "
 hook-1 = echo "喇"
 initial = 0 
 click-left = playerctl play-pause spotify
+format-underline = #1db954
 
 [module/spotify-next]
 type = custom/script
